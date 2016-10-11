@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travelling Salesman Problem</title>
+    <link rel="stylesheet" href="./css/jquery.flipster.min.css">
+    <link rel="stylesheet" href="./css/ace.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/jquery-ui.css">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="./lib/codemirror.css">
+</head>
+
+<body>
+
+    <div class="boxEditor">
+        <span class="name">Nome da função:</span>
+        <input type="text" class="nameFunction" />
+        <div id="editor"></div>
+    </div>
+    <div id="button-create"><span>CREATE</span></div>
+    <div id="button-save"><span>SAVE</span></div>
+
+    <!--<button id="btFunc">Insert mutation</button>
+      <div id="editor">function mutation(genome) { 
+        var clone = JSON.parse(JSON.stringify(genome)) 
+        var gene1_index = Math.floor(Math.random() * clone.length) 
+        var gene2_index = Math.floor(Math.random() * clone.length)
+         var temp = clone[gene1_index] clone[gene1_index] = clone[gene2_index]
+        clone[gene2_index] = temp return clone }
+
+    </div>
+    <button id="teste" style="position:absolute">teste</button>-->
+
+    <!--<div class="row-fluid">
+        <div class="row">
+            <span id="status" class="show-grid"></span>
+        </div>
+        <canvas id="canvas" width="1000" height="700" style="border:1px solid;transform: scaleY(-1);">
+            your browser sucks
+        </canvas>
+    </div>-->
+
+    <!--<div id="wrapper">
+        <div class="overlay"></div>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                       Menu
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="btInicio">Inicio</a>
+                </li>
+                <li>
+                    <a href="#">Sobre</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Algoritmo<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown-header">Genético</li>
+                        <li><a href="#" id="btMutation">Mutation</a></li>
+                        <li><a href="#" id="btCrossover">Crossover</a></li>
+                        <li><a href="#" id="btFitness">Fitness</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Desenvolvedor</a>
+                </li>
+                <li>
+                    <a href="#">Serviço</a>
+                </li>
+                <li>
+                    <a href="#">Contato</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>
+            <div class="box-principal">
+                <div id="inicio">
+                    <div class="txFramework">Framework para auxiliar no problema do caixeiro viajante.</div>
+                    <div class="tx-problema">O que é o problema do caixeiro viajante?</div>
+                    <div class="tx-problema-ex">
+                        É um problema que tenta determinar a menor rota para percorrer uma série de cidades (visitando uma única vez cada uma delas), retornando à cidade de origem. Ele é um problema de otimização NP-difícil inspirado na necessidade dos vendedores em realizar
+                        entregas em diversos locais (as cidades) percorrendo o menor caminho possível, reduzindo o tempo necessário para a viagem e os possíveis custos com transporte e combustível.
+                    </div>
+
+                    <div class="tx-algoritmo">Algoritmos Genéticos</div>
+                    <div class="tx-algoritmo-ex">
+                        Algoritmos genéticos podem ser usados para solucionar este problema em menor tempo. Embora não haja garantias de encontrar a melhor solução, ela pode achar uma solução satisfatória bem próxima da ótima para um tour de 100 cidades em menos de 1 minuto.
+                        Há algums passos básicos para solucionar o problema do caixeiro viajante usando algoritmos genéticos
+                    </div>
+
+
+                    <div class="tx-passo">Passo a passo do algoritmo genético</div>
+                    <div class="tx-passo-algoritmo">
+                        - Primeiro, um conjunto aleatório de rotas são criadas, inicializando assim a população. Este algoritmo cria uma população inicial 'gulosa', o qual dá preferência em montar conexões entre as cidades que estão mais próximas uma da outra.
+                        <br><br>- Segundo, escolha as 2 melhores rotas (menores) da população para o cruzamento (crossover) e combine-os para gerar 2 novas rotas filhas. Grandes chances destas novas rotas filhas serem melhores que os seus pais.
+                        <br><br>- Em raros casos, as rotas filhas sofrem o processo de mutação. Isto é feito para prevenir que todas as rotas da população sejam idênticas.
+                        <br><br>- As novas rotas filhas são inseridas na população substituindo no lugar de 2 rotas das maiores existentes. O tamanho da população se mantém constante.
+                        <br><br>- As novas rotas filhas são repetidamente criadas até atingirem um critério de parada desejado (melhor rota).
+                    </div>
+                </div>
+                <div id="algoritmo">
+                    <div id="mutation">
+                        <div class="tituloMutation">O que é a mutação:</div>
+                        <div class="txMutation">A mutação no algoritmo genêtico</div>
+                    </div>
+                    <div id="crossover">
+                        <div class="tituloCrossover">O que é o cruzamento:</div>
+                        <div class="txCrossover">O cruzamento no algoritmo genêtico</div>
+                    </div>
+                    <div id="fitness">
+                        <div class="tituloFitness">O que é o Fitness:</div>
+                        <div class="txFitness">O fitness no algoritmo genêtico</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>-->
+
+
+
+    <script>
+        window.$ = window.jQuery = require('./js/jquery.min.js');
+    </script>
+    <script src="./js/jquery.flipster.min.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+    <script src="./lib/codemirror.js"></script>
+    <script src="./lib/codemirror.js"></script>
+    <script src="./mode/javascript/jquery.min.js"></script>
+    <script src="./mode/javascript/javascript.js"></script>
+    <script src="./bootstrap/js/bootstrap.js"></script>
+    <script src="./js/d3.v4.min.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/clicks.js"></script>
+    <!--<script src="./js/TSP.js"></script>-->
+
+
+</body>
+
+</html>
