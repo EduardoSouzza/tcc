@@ -145,7 +145,7 @@ var geneticAlgorithm = geneticAlgorithmConstructor({
     crossoverFunction: crossoverFunction,
     fitnessFunction: fitnessFunction,
     population: [firstPhenotype],
-    populationSize: 100
+    populationSize: 50
 });
 
 console.log("Starting with:")

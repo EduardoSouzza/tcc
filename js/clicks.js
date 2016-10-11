@@ -1,17 +1,20 @@
-$(function() {
+$(function () {
 
-    $("#btInicio").on("click", function() {
+    $("#btInicio").on("click", function () {
         showInicio();
     });
 
-    $("#btMutation").on("click", function() {
+    $("#btMutation").on("click", function () {
         showMutation();
+        $("#editMutation").show();
     });
-    $("#btCrossover").on("click", function() {
+    $("#btCrossover").on("click", function () {
         showCrossover();
+        $("#editCrossover").show();
     });
-    $("#btFitness").on("click", function() {
+    $("#btFitness").on("click", function () {
         showFitness();
+        $("#editFitness").show();
     });
 
 });
@@ -25,7 +28,7 @@ function showInicio() {
 function showMutation() {
 
     hideDivs();
-    $("#mutation, #editMutation").show();
+    $("#mutation").show();
 }
 
 function showCrossover() {
@@ -41,5 +44,6 @@ function showFitness() {
 }
 
 function hideDivs() {
-    $("#inicio, #mutation, #crossover, #fitness, #editMutation").hide();
+    $("#inicio, #mutation, #crossover, #fitness").hide();
+    $("#editMutation, #editCrossover, #editFitness").hide();
 }
